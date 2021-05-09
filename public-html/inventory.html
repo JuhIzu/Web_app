@@ -59,7 +59,7 @@
 		$(document).ready(function(){			
 			$("#getInventory").click(function(){
 				$.ajax({
-					url: "http://localhost:8000/inventory?userid=" +$("#userId").val(), 
+					url: "http://assign2inventoryapp.azurewebsites.net/inventory?userid=" +$("#userId").val(), 
 					success: function(result){						
 						// create HTML Elements to show the result
 						var searchTerm = document.getElementById("userId").value;
