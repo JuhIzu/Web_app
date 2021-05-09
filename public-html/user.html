@@ -59,7 +59,7 @@
 		$(document).ready(function(){			
 			$("#getUserName").click(function(){
 				$.ajax({
-					url: "http://localhost:9000/user?id=" +$("#userId").val(), 
+					url: "https://assign2userapp.azurewebsites.net/user?id=" +$("#userId").val(), 
 					success: function(result){
 						//alert("Hello " + result.name);
 						
