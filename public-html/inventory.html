@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <title>User Inventory Lookup</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<style>
+		#logo {
+			color: blue;
+			font-weight: bold;
+		}
+		#results {
+			margin: 10px auto;
+			width: 30%;
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container" id="main-content">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+					<div id="logo" class="navbar-item">
+                        <h1>User Inventory Lookup by Juliana</h1>
+                    </div>
+                </div>
+
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/">
+                            Home
+                        </a>
+
+                        <a class="navbar-item" href="./user.html">
+                            Search User
+                        </a>
+						<a class="navbar-item" href="./inventory.html">
+                            Get Inventory
+                        </a>
+                    </div>
+                </div>
+            </nav>            
+        </div>
+		<div class="container">
+			<label for="userId">User Id:</label>
+            <input type="text" id="userId" name="userId"><br><br>
+			<button id="getInventory">Get inventory</button>
+        </div>
+		<div id="results"></div>
+    </section>
+	
+	<script>
+		$(document).ready(function(){			
+			$("#getInventory").click(function(){
+				$.ajax({
+					url: "http://localhost:8000/inventory?userid=" +$("#userId").val(), 
+					success: function(result){						
+						// create HTML Elements to show the result
+						var searchTerm = document.getElementById("userId").value;
+						if (searchTerm.trim().length == 0) return;
+												
+						var h2Element = document.createElement("h2");
+						h2Element.appendChild(document.createTextNode("This is your stuff: \r\n \r\n " +
+							result));
+							
+						document.getElementById("results").appendChild(h2Element);								
+					}
+				});
+				
+				
+			});
+		});
+	</script>
+</body>
+
+</html>
