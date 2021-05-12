@@ -11,8 +11,6 @@ node {
     stage('init') {
       checkout scm
     } 
-    
-   // deleted build
   
     stage('deploy') {
       def webAppResourceGroup = 'ResourceGroup_Assign2'
